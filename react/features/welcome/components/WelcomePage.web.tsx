@@ -197,10 +197,11 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
         const contentClassName = showAdditionalContent ? 'with-content' : 'without-content';
         const footerClassName = DISPLAY_WELCOME_FOOTER ? 'with-footer' : 'without-footer';
+        const meetingHistoryClassName = this.state.showMeetingHistory ? 'with-meeting-history' : '';
 
         return (
             <div
-                className = { `welcome ${contentClassName} ${footerClassName}` }
+                className = { `welcome ${contentClassName} ${footerClassName} ${meetingHistoryClassName}` }
                 id = 'welcome_page'>
                 <div className = 'header'>
                     <div className = 'header-image' />

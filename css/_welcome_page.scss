@@ -21,6 +21,14 @@ body.welcome-page {
     background: #0f0f12;
     overflow: auto;
     min-height: 100vh;
+    zoom: 1.5;
+
+    @supports not (zoom: 1.5) {
+        transform: scale(1.5);
+        transform-origin: top left;
+        width: calc(100% / 1.5);
+        min-height: calc(100vh / 1.5);
+    }
 }
 
 .welcome {
@@ -154,7 +162,7 @@ body.welcome-page {
             gap: 12px;
             flex-wrap: wrap;
             z-index: $zindex2;
-            margin-bottom: 10px;
+            margin-bottom: 1px;
         }
 
         #enter_room {
@@ -400,9 +408,14 @@ body.welcome-page {
         justify-content: start;
     }
 
+    &.with-meeting-history {
+        justify-content: flex-start;
+    }
+
     .welcome-cards-container {
         color:#131519;
         padding-top: 1px;
+        margin-top: -10px;
     }
 
     .welcome-card-column {
