@@ -458,10 +458,10 @@ export default function FloatingScreenSharePreview() {
             <div className = 'floating-screen-share-preview-toolbar toolbox-content-items'>
                 { document.pictureInPictureEnabled && (
                     <button
-                        aria-label = { t('toolbar.accessibilityLabel.keepPreviewOnAllTabs') }
+                        aria-label = 'Keep this visible anywhere'
                         className = { `floating-preview-pip-button toolbox-icon ${isPreviewInPiP ? 'toggled' : ''}` }
                         onClick = { togglePreviewPiP }
-                        title = { t('toolbar.accessibilityLabel.keepPreviewOnAllTabs') }
+                        title = 'Keep this visible anywhere'
                         type = 'button'>
                         <IconEnlarge />
                     </button>

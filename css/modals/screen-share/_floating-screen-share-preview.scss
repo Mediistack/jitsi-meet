@@ -96,7 +96,7 @@
         background: transparent;
         border: none;
         border-radius: 4px;
-        color: rgba(255, 255, 255, 0.9);
+        color: #fff;
         cursor: pointer;
         display: flex;
         margin: 0 4px;
@@ -111,6 +111,7 @@
         }
 
         svg {
+            fill: currentColor;
             height: 24px;
             width: 24px;
         }
