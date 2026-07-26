@@ -68,7 +68,7 @@ import AudioSettingsButton from './components/web/AudioSettingsButton';
 import CustomOptionButton from './components/web/CustomOptionButton';
 import FullscreenButton from './components/web/FullscreenButton';
 import LinkToSalesforceButton from './components/web/LinkToSalesforceButton';
-import PictureInPictureButton from './components/web/PictureInPictureButton';
+import PictureInPictureButton, { togglePictureInPicture } from './components/web/PictureInPictureButton';
 import ProfileButton from './components/web/ProfileButton';
 import ShareDesktopButton from './components/web/ShareDesktopButton';
 import ToggleCameraButton from './components/web/ToggleCameraButton';
@@ -573,6 +573,18 @@ export const useKeyboardShortcuts = (toolbarButtons: Array<string>) => {
                 exec: onToggleTileView,
                 helpDescription: 'toolbar.tileViewToggle'
             },
+            isButtonEnabled('pip', _toolbarButtons) && {
+                character: 'I',
+                exec: () => {
+                    sendAnalytics(createShortcutEvent(
+                        'toggle.pip',
+                        ACTION_SHORTCUT_TRIGGERED,
+                        { enable: !document.pictureInPictureElement }
+                    ));
+                    togglePictureInPicture();
+                },
+                helpDescription: 'keyboardShortcuts.togglePip'
+            },
             !_isSpeakerStatsDisabled && isButtonEnabled('stats', _toolbarButtons) && {
                 character: 'T',
                 exec: onSpeakerStats,
@@ -634,7 +646,7 @@ export const useKeyboardShortcuts = (toolbarButtons: Array<string>) => {
         }
 
         return () => {
-            [ 'A', 'C', 'D', 'P', 'R', 'S', 'W', 'T', 'G' ].forEach(letter =>
+            [ 'A', 'C', 'D', 'I', 'P', 'R', 'S', 'W', 'T', 'G' ].forEach(letter =>
                 dispatch(unregisterShortcut(letter)));
 
             if (_shouldDisplayReactionsButtons) {
